@@ -92,7 +92,7 @@
     font-family: "billcorporatenarrow-book", sans-serif;
     font-size: 24px;
     height: 60px;
-    line-height: 55px;
+    line-height: 60px;
     padding-left: 20px;
     padding-right: 20px;
   }
@@ -131,7 +131,7 @@
     .btn-download {
       font-size: 20px;
       height: 50px;
-      line-height: 45px;
+      line-height: 50px;
     }
     .icon {
       height: 30px;

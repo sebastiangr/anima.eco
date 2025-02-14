@@ -71,7 +71,7 @@
   }
   .body-bg {
     background: #892b21;
-    background-size: 105%;
+    background-size: cover;
     background-position: center center;
   }
   .bg-top, .bg-bottom {
@@ -79,4 +79,3 @@
     background-position: center center;
   }
 </style>
-

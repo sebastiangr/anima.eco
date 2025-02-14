@@ -79,4 +79,10 @@
     background-size: 102%;
     background-position: center center;
   }
+
+  @media (max-width: 768px) {
+    button.language-toggle {
+      font-size: 1.2rem;
+    }
+  }
 </style>

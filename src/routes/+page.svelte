@@ -11,23 +11,23 @@
 
 <div class="flex flex-col items-center justify-center min-h-screen">
   <img src={Logo} alt="ANIMA" class="logo mx-auto mt-8 mb-8 hover:scale-110 transition duration-700" />
-  <h2>{ $language === 'en' ? 'Website Under Construction' : 'Sitio web en construcción' }</h2> <!-- Updated content based on language -->
+  <h2 class="pr-4 pl-4">{ $language === 'en' ? 'Website under construction' : 'Sitio web en construcción' }</h2> <!-- Updated content based on language -->
 
   <a href={$language === 'en' ? CatalogEN : CatalogES} target="_blank" download class="btn-download mt-8 text-white focus:outline-none hover:scale-95 transition duration-300">
-    { $language === 'en' ? 'View catalog' : 'Ver catálogo' }
+    { $language === 'en' ? 'Download catalog' : 'Descargar catálogo' }
   </a>
 
   <div class="bottom-nav mt-12 sm:fixed sm:bottom-0 sm:left-0 sm:right-0 sm:p-4">
       <ul class="social-icons flex flex-col sm:flex-row justify-center items-center sm:items-baseline gap-4 sm:gap-0">
         <li class="sm:mr-4 ">
           <a href="https://www.instagram.com/anima.eco/" target="_blank" class="flex flex-row items-center transition duration-500 ease-in-out hover:scale-105"> 
-            <img class="w-10 h-10" src={IconInstagram} alt="Instagram" />
+            <img class="icon" src={IconInstagram} alt="Instagram" />
             <span>@anima.eco</span>
           </a>
         </li>
         <li>
           <a href="https://wa.me/573146846166" target="_blank" class="flex flex-row items-center transition duration-500 ease-in-out hover:scale-105">
-            <img class="w-10 h-10" src={IconWhatsapp} alt="Whatsapp" />
+            <img class="icon" src={IconWhatsapp} alt="Whatsapp" />
             <span>+57 314 6486166 / +57 300 3060724</span>
           </a>
         </li>
@@ -42,6 +42,9 @@
     font-size: 32px;
     text-align: center;
   }
+  .logo {
+    width: 300px;
+  }
   .btn-download {
     background-color: #eae0d6;
     border: 2px solid #6b201b;
@@ -55,8 +58,9 @@
     padding-left: 20px;
     padding-right: 20px;
   }
-  .logo {
-    width: 300px;
+  .icon {
+    height: 40px;
+    width: 40px;
   }
   ul.social-icons li {
     list-style: none;
@@ -71,5 +75,26 @@
     color: #eae0d6;    
     font-size: 18px;
     padding-left: 10px;
+  }
+
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 24px;
+    }
+    .logo {
+      width: 250px;
+    }
+    .btn-download {
+      font-size: 20px;
+      height: 50px;
+      line-height: 50px;
+    }
+    .icon {
+      height: 30px;
+      width: 30px;
+    }
+    ul.social-icons li a span {      
+      font-size: 16px;
+    }
   }
 </style>

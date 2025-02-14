@@ -1,15 +1,19 @@
-<script lang="ts">
+<script lang="ts">    
+    import { language } from '../stores/languageStore'; // Importing the language store
+
+    // IMPORT ASSETS
     import Logo from "$lib/assets/ANIMA_logo-white.svg";
     import IconInstagram from "$lib/assets/icon-instagram.svg";
     import IconWhatsapp from "$lib/assets/icon-whatsapp.svg";
-    import { language } from '../stores/languageStore'; // Importing the language store
+    import CatalogES from "$lib/pdf/ANIMA_2025_ES.pdf";
+    import CatalogEN from "$lib/pdf/ANIMA_2025_EN.pdf";
 </script>
 
 <div class="flex flex-col items-center justify-center min-h-screen">
   <img src={Logo} alt="ANIMA" class="logo mx-auto mt-8 mb-8 hover:scale-110 transition duration-700" />
   <h2>{ $language === 'en' ? 'Website Under Construction' : 'Sitio web en construcción' }</h2> <!-- Updated content based on language -->
 
-  <a href="https://www.google.com" target="_blank" class="btn-download mt-8 text-white focus:outline-none hover:scale-95 transition duration-300">
+  <a href={$language === 'en' ? CatalogEN : CatalogES} target="_blank" download class="btn-download mt-8 text-white focus:outline-none hover:scale-95 transition duration-300">
     { $language === 'en' ? 'View catalog' : 'Ver catálogo' }
   </a>
 

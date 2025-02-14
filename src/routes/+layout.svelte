@@ -2,10 +2,11 @@
   import '../app.postcss';
   import { dev } from '$app/environment';
   import { injectAnalytics } from '@vercel/analytics/sveltekit';
+  import { language } from '../stores/languageStore'; // Updated import path
+  // IMPORT ASSETS
   import Background from "$lib/assets/ANIMA_bg.jpg";
   import ParallaxTop from "$lib/assets/ANIMA_bg-01.png";
-  import ParallaxBottom from "$lib/assets/ANIMA_bg-02.png";
-  import { language } from '../stores/languageStore'; // Updated import path
+  import ParallaxBottom from "$lib/assets/ANIMA_bg-02.png";  
 
   let mouseX: number = 0;
   let mouseY: number = 0;

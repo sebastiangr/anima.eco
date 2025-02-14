@@ -9,16 +9,28 @@
 
   let mouseX: number = 0;
   let mouseY: number = 0;
+  let isMobile: boolean;
+  let handleMouseMove: (event: MouseEvent) => void;
 
-  function handleMouseMove(event: MouseEvent) {
-    mouseX = (event.clientX / window.innerWidth) * 100;
-    mouseY = (event.clientY / window.innerHeight) * 100;
+  if (typeof window !== 'undefined') {
+    isMobile = window.innerWidth <= 992;
+
+    handleMouseMove = (event: MouseEvent) => {
+      if (!isMobile) {
+        mouseX = (event.clientX / window.innerWidth) * 100;
+        mouseY = (event.clientY / window.innerHeight) * 100;
+      }
+    };
+
+    window.addEventListener('resize', () => {
+      isMobile = window.innerWidth <= 992;
+    });
   }
 
   injectAnalytics({ mode: dev ? 'development' : 'production' });
 
   export function toggleLanguage() {
-      language.update((current: string) => (current === 'en' ? 'es' : 'en')); // Explicitly typed parameter
+    language.update((current: string) => (current === 'en' ? 'es' : 'en')); // Explicitly typed parameter
   }
 </script>
 
@@ -32,20 +44,17 @@
     {/if}
 </button>
 
-<!-- <div
-  class="body-bg flex items-center justify-center min-h-screen"
-  style={`background-image: url(${Background}); background-position: ${mouseX * 0.1}% ${mouseY * 0.1}%`}
-  on:mousemove={handleMouseMove}
-  role="document"> -->
-<div class="body-bg flex items-center justify-center min-h-screen" on:mousemove={handleMouseMove} role="document">  
-  <div 
-    class="bg-top absolute top-0 left-0 w-full h-full pointer-events-none"
-    style={`background-image: url(${ParallaxTop}); background-position: ${mouseX * 0.1}% ${mouseY * 0.1}%`}>
-  </div>
-  <div 
-    class="bg-bottom absolute top-0 left-0 w-full h-full pointer-events-none"
-    style={`background-image: url(${ParallaxBottom}); background-position: ${mouseX * 0.2}% ${mouseY * 0.2}%; `}>
-  </div>
+<div class="body-bg flex items-center justify-center min-h-screen" on:mousemove={handleMouseMove} role="document" style={`${isMobile ? `background-image: url(${Background});` : ''}`}>
+  {#if !isMobile}
+    <div 
+      class="bg-top absolute top-0 left-0 w-full h-full pointer-events-none"
+      style={`background-image: url(${ParallaxTop}); background-position: ${mouseX * 0.1 + '% ' + mouseY * 0.1 + '%'}`}>
+    </div>
+    <div 
+      class="bg-bottom absolute top-0 left-0 w-full h-full pointer-events-none"
+      style={`background-image: url(${ParallaxBottom}); background-position: ${mouseX * 0.2 + '% ' + mouseY * 0.2 + '%'}`}>
+    </div>
+  {/if}
 
   <slot />
 </div>
@@ -70,3 +79,4 @@
     background-position: center center;
   }
 </style>
+
